@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANLC – Associação Nacional de Limpeza de Crédito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul: #0C1F3F;
+    --azul-mid: #1B3464;
+    --dourado: #B8962E;
+    --dourado-claro: #D4A93A;
+    --preto: #0A0A0A;
+    --cinza-escuro: #2C2C2C;
+    --cinza: #6B6B6B;
+    --cinza-claro: #D4D0C8;
+    --bege: #F5F1E8;
+    --branco: #FDFCF9;
+    --vermelho: #C0392B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Source Serif 4', Georgia, serif; background: var(--branco); color: var(--preto); overflow-x: hidden; }
+
+  /* ── TOPO ── */
+  .topo-bar {
+    background: var(--azul);
+    padding: 8px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--dourado);
+  }
+  .topo-bar p { font-family: 'Barlow', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  .topo-bar span { color: var(--dourado); }
+
+  /* ── HEADER ── */
+  header { background: var(--branco); border-bottom: 3px double var(--cinza-claro); padding: 24px 6%; position: sticky; top: 0; z-index: 100; }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; }
+  .logo-block { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+  .logo-sigla { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; color: var(--azul); letter-spacing: 6px; line-height: 1; }
+  .logo-divider { width: 100%; height: 1px; background: var(--dourado); margin: 2px 0; }
+  .logo-nome { font-family: 'Barlow', sans-serif; font-size: 9.5px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--cinza); }
+  nav { display: flex; gap: 32px; align-items: center; }
+  nav a { font-family: 'Barlow', sans-serif; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cinza-escuro); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+  nav a:hover { color: var(--dourado); }
+  .nav-cta { background: var(--azul); color: var(--branco) !important; padding: 9px 22px; font-weight: 600 !important; }
+  .nav-cta:hover { background: var(--azul-mid); }
+  .nav-destaque { color: var(--vermelho) !important; font-weight: 700 !important; border-bottom: 2px solid var(--vermelho); padding-bottom: 2px; }
+  .nav-destaque:hover { color: var(--vermelho) !important; opacity: 0.8; }
+
+  /* ── HERO ── */
+  .hero { background: var(--azul); padding: 0 6%; position: relative; overflow: hidden; }
+  .hero-rule-top { border-top: 1px solid rgba(201,168,76,0.3); border-bottom: 1px solid rgba(201,168,76,0.15); height: 6px; }
+  .hero-layout { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 320px; gap: 0; min-height: 500px; }
+  .hero-main { padding: 64px 56px 64px 0; border-right: 1px solid rgba(255,255,255,0.08); }
+  .hero-kicker { font-family: 'Barlow', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--dourado); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .hero-kicker::before { content: ''; display: block; width: 28px; height: 1px; background: var(--dourado); }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(34px, 4.2vw, 56px); font-weight: 700; color: var(--branco); line-height: 1.12; margin-bottom: 28px; font-style: italic; }
+  .hero h1 strong { font-style: normal; font-weight: 900; color: var(--dourado-claro); }
+  .hero-lead { font-size: 16px; color: rgba(255,255,255,0.58); line-height: 1.8; font-weight: 300; max-width: 520px; margin-bottom: 44px; font-style: italic; }
+  .hero-rule { width: 100%; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 36px; }
+  .hero-cta-group { display: flex; gap: 20px; align-items: center; }
+  .btn-primary { background: var(--dourado); color: var(--azul); padding: 14px 34px; font-family: 'Barlow', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; display: inline-block; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--dourado-claro); }
+  .btn-ghost { font-family: 'Barlow', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+  .btn-ghost:hover { color: var(--branco); border-color: var(--branco); }
+  .hero-sidebar { padding: 64px 0 64px 44px; display: flex; flex-direction: column; gap: 32px; }
+  .sidebar-stat { border-bottom: 1px solid rgba(255,255,255,0.07); padding-bottom: 28px; }
+  .sidebar-stat:last-child { border-bottom: none; padding-bottom: 0; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 900; color: var(--dourado); line-height: 1; margin-bottom: 6px; }
+  .stat-label { font-family: 'Barlow', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+  .stat-desc { font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 6px; line-height: 1.5; font-weight: 300; }
+
+  /* ── BANNER DESTAQUE ── */
+  .banner-destaque {
+    background: var(--vermelho);
+    padding: 14px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border-bottom: 2px solid #9B2B20;
+  }
+  .banner-destaque-pulse {
+    width: 8px; height: 8px;
+    background: var(--branco);
+    border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
+  .banner-destaque p {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--branco);
+  }
+  .banner-destaque a {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--branco);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    padding-bottom: 1px;
+    transition: border-color 0.2s;
+  }
+  .banner-destaque a:hover { border-color: var(--branco); }
+
+  /* ── REPORTAGEM EM DESTAQUE ── */
+  .reportagem {
+    background: var(--branco);
+    border-bottom: 4px double var(--cinza-claro);
+  }
+
+  /* Cabeçalho editorial */
+  .rep-editorial-header {
+    background: var(--preto);
+    padding: 20px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .rep-editorial-header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .rep-pub-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 36px);
+    font-weight: 900;
+    color: var(--branco);
+    letter-spacing: 3px;
+  }
+  .rep-pub-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+  }
+  .rep-pub-info span {
+    font-family: 'Barlow', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+  .rep-pub-edicao {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--dourado) !important;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  /* Regra tripla */
+  .rep-triple-rule {
+    height: 8px;
+    background: linear-gradient(to bottom, var(--dourado) 0%, var(--dourado) 33%, var(--preto) 33%, var(--preto) 66%, var(--dourado) 66%, var(--dourado) 100%);
+    margin: 0;
+  }
+
+  .rep-body-wrap {
+    padding: 48px 6% 64px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Kicker */
+  .rep-kicker {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--cinza-claro);
+    margin-bottom: 32px;
+  }
+  .rep-kicker-cat {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--vermelho);
+    white-space: nowrap;
+  }
+  .rep-kicker-line { flex: 1; height: 1px; background: var(--cinza-claro); }
+  .rep-kicker-serie {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    color: var(--cinza);
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  /* Manchete */
+  .rep-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 4.5vw, 60px);
+    font-weight: 900;
+    line-height: 1.06;
+    color: var(--preto);
+    border-bottom: 3px solid var(--preto);
+    padding-bottom: 20px;
+    margin-bottom: 18px;
+  }
+  .rep-headline em { font-style: italic; color: var(--vermelho); }
+
+  .rep-deck {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--cinza-escuro);
+    font-style: italic;
+    font-weight: 300;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--cinza-claro);
+    padding-bottom: 16px;
+  }
+
+  .rep-byline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .rep-byline span { font-family: 'Barlow', sans-serif; font-size: 12px; color: var(--cinza); }
+  .rep-byline strong { color: var(--preto); font-weight: 700; }
+  .rep-tags { display: flex; gap: 8px; }
+  .rep-tag { font-family: 'Barlow', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cinza); border: 1px solid var(--cinza-claro); padding: 3px 8px; }
+
+  /* Imagem */
+  .rep-img-wrap { width: 100%; aspect-ratio: 16/5.5; overflow: hidden; background: #111; margin-bottom: 8px; }
+  .rep-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .rep-img-caption { font-family: 'Barlow', sans-serif; font-size: 11px; color: var(--cinza); border-top: 1px solid var(--cinza-claro); padding-top: 8px; margin-bottom: 40px; }
+
+  /* Colunas */
+  .rep-cols { display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr; gap: 0; margin-bottom: 36px; }
+  .rep-col { padding: 0 32px; }
+  .rep-col:first-child { padding-left: 0; }
+  .rep-col:last-child { padding-right: 0; }
+  .rep-col-div { background: var(--cinza-claro); }
+  .rep-col p { font-size: 15.5px; line-height: 1.82; color: var(--cinza-escuro); font-weight: 300; margin-bottom: 16px; }
+  .rep-col p:last-child { margin-bottom: 0; }
+  .rep-dropcap::first-letter { font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 900; float: left; line-height: 0.72; margin-right: 8px; margin-top: 10px; color: var(--vermelho); }
+
+  /* Pull quote */
+  .rep-pullquote { border-top: 3px solid var(--preto); border-bottom: 1px solid var(--cinza-claro); padding: 24px 0; margin: 4px 0 36px; }
+  .rep-pullquote blockquote { font-family: 'Playfair Display', serif; font-size: clamp(18px, 2.2vw, 26px); font-weight: 700; font-style: italic; color: var(--preto); line-height: 1.35; }
+  .rep-pullquote cite { font-family: 'Barlow', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cinza); display: block; margin-top: 10px; font-style: normal; }
+
+  /* Dados */
+  .rep-dados { display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr; border: 2px solid var(--preto); margin-bottom: 36px; }
+  .rep-dado { padding: 28px 24px; display: flex; flex-direction: column; gap: 6px; text-align: center; }
+  .rep-dado-sep { background: var(--preto); opacity: 0.15; }
+  .rep-dado-num { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 900; color: var(--preto); line-height: 1; }
+  .rep-dado-label { font-family: 'Barlow', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cinza); font-weight: 600; }
+  .rep-dado-desc { font-size: 12px; color: var(--cinza); font-weight: 300; line-height: 1.4; }
+
+  /* Ficha */
+  .rep-ficha { background: var(--azul); padding: 32px 36px; }
+  .rep-ficha-title { font-family: 'Barlow', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--dourado-claro); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .rep-ficha-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px 40px; }
+  .rep-ficha-item label { font-family: 'Barlow', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.35); display: block; margin-bottom: 4px; }
+  .rep-ficha-item p { font-size: 14px; color: var(--branco); font-weight: 400; line-height: 1.4; font-family: 'Barlow', sans-serif; }
+
+  /* ── SECTION SHARED ── */
+  .section-wrap { max-width: 1200px; margin: 0 auto; }
+  .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 48px; padding-bottom: 16px; border-bottom: 2px solid var(--preto); }
+  .section-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(22px, 2.8vw, 34px); font-weight: 700; color: var(--preto); }
+  .section-tag { font-family: 'Barlow', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dourado); border: 1px solid var(--dourado); padding: 3px 10px; flex-shrink: 0; }
+
+  /* ── SOBRE ── */
+  .sobre { padding: 80px 6%; background: var(--bege); border-top: 1px solid var(--cinza-claro); }
+  .sobre-grid { display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr; gap: 0; }
+  .sobre-col { padding: 0 40px; }
+  .sobre-col:first-child { padding-left: 0; }
+  .sobre-col:last-child { padding-right: 0; }
+  .col-divider { background: var(--cinza-claro); }
+  .sobre-col h3 { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; color: var(--azul); margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--cinza-claro); }
+  .sobre-col p { font-size: 15px; color: var(--cinza-escuro); line-height: 1.8; font-weight: 300; }
+
+  /* ── COMO FUNCIONA ── */
+  .como { padding: 80px 6%; background: var(--branco); border-top: 1px solid var(--cinza-claro); border-bottom: 1px solid var(--cinza-claro); }
+  .steps-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .step { padding: 36px 32px; border-right: 1px solid var(--cinza-claro); position: relative; }
+  .step:last-child { border-right: none; }
+  .step-rule { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--cinza-claro); }
+  .step:first-child .step-rule { background: var(--dourado); }
+  .step-num { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; color: var(--cinza-claro); line-height: 1; margin-bottom: 16px; }
+  .step h3 { font-family: 'Barlow', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--azul); margin-bottom: 10px; }
+  .step p { font-size: 14px; color: var(--cinza); line-height: 1.75; font-weight: 300; }
+
+  /* ── DIFERENCIAIS ── */
+  .diferenciais { padding: 80px 6%; background: var(--bege); }
+  .dif-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .dif-item { padding: 36px 40px; border-right: 1px solid var(--cinza-claro); border-bottom: 1px solid var(--cinza-claro); }
+  .dif-item:nth-child(2n) { border-right: none; }
+  .dif-item:nth-last-child(-n+2) { border-bottom: none; }
+  .dif-num { font-family: 'Barlow', sans-serif; font-size: 10px; letter-spacing: 2px; color: var(--dourado); font-weight: 600; margin-bottom: 10px; }
+  .dif-item h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--azul); margin-bottom: 10px; }
+  .dif-item p { font-size: 14px; color: var(--cinza); line-height: 1.75; font-weight: 300; }
+
+  /* ── CONTATO ── */
+  .contato { padding: 80px 6%; background: var(--azul); }
+  .contato-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .contato-text .section-header { border-bottom-color: rgba(255,255,255,0.15); }
+  .contato-text .section-header h2 { color: var(--branco); }
+  .contato-text p { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.8; font-weight: 300; font-style: italic; }
+  .contato-form-area { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); padding: 44px 40px; }
+  .form-label { font-family: 'Barlow', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--dourado); margin-bottom: 8px; display: block; }
+  .form-field { margin-bottom: 20px; }
+  .form-field input, .form-field textarea { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); padding: 12px 16px; font-family: 'Barlow', sans-serif; font-size: 14px; color: var(--branco); outline: none; transition: border-color 0.2s; resize: none; }
+  .form-field input::placeholder, .form-field textarea::placeholder { color: rgba(255,255,255,0.22); }
+  .form-field input:focus, .form-field textarea:focus { border-color: var(--dourado); }
+  .form-field textarea { height: 90px; }
+  .form-submit { width: 100%; background: var(--dourado); color: var(--azul); padding: 14px; font-family: 'Barlow', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s; }
+  .form-submit:hover { background: var(--dourado-claro); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--preto); padding: 28px 6%; border-top: 3px solid var(--dourado); }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; color: var(--branco); letter-spacing: 4px; }
+  .footer-copy { font-family: 'Barlow', sans-serif; font-size: 11px; color: rgba(255,255,255,0.22); letter-spacing: 0.5px; text-align: center; }
+  .footer-seal { display: flex; gap: 10px; align-items: center; }
+  .seal { font-family: 'Barlow', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.22); }
+  .seal-pipe { width: 1px; height: 12px; background: rgba(255,255,255,0.12); }
+
+  /* ── REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .hero-layout { grid-template-columns: 1fr; }
+    .hero-sidebar { display: none; }
+    .hero-main { padding: 48px 0; }
+    .sobre-grid, .rep-cols, .rep-dados { grid-template-columns: 1fr; }
+    .col-divider, .rep-col-div, .rep-dado-sep { display: none; }
+    .sobre-col { padding: 24px 0; border-bottom: 1px solid var(--cinza-claro); }
+    .sobre-col:last-child { border-bottom: none; }
+    .rep-col { padding: 0 0 24px; border-bottom: 1px solid var(--cinza-claro); }
+    .rep-col:last-child { border-bottom: none; padding-bottom: 0; }
+    .steps-list { grid-template-columns: 1fr 1fr; }
+    .dif-grid { grid-template-columns: 1fr; }
+    .dif-item { border-right: none; }
+    .contato-inner { grid-template-columns: 1fr; gap: 40px; }
+    .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+    .rep-ficha-grid { grid-template-columns: 1fr 1fr; }
+    .rep-img-wrap { aspect-ratio: 4/3; }
+    .rep-dado { border-bottom: 1px solid var(--cinza-claro); }
+    .rep-dado:last-child { border-bottom: none; }
+    nav { display: none; }
+    .banner-destaque { flex-direction: column; gap: 8px; text-align: center; }
+    .rep-editorial-header-inner { flex-direction: column; gap: 8px; text-align: center; }
+    .rep-pub-info { align-items: center; }
+  }
+  @media (max-width: 560px) {
+    .steps-list { grid-template-columns: 1fr; }
+    .step { border-right: none; border-bottom: 1px solid var(--cinza-claro); }
+    .rep-ficha-grid { grid-template-columns: 1fr; }
+    .rep-tags { flex-wrap: wrap; }
+    .rep-byline { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPO -->
+<div class="topo-bar">
+  <p>Associação Nacional de Limpeza de Crédito <span>— ANLC</span></p>
+  <p>Proteção ao Consumidor Brasileiro</p>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo-block">
+      <span class="logo-sigla">ANLC</span>
+      <div class="logo-divider"></div>
+      <span class="logo-nome">Associação Nacional de Limpeza de Crédito</span>
+    </div>
+    <nav>
+      <a href="#reportagem" class="nav-destaque">Destaque 2026</a>
+      <a href="#sobre">A Associação</a>
+      <a href="#como">Como Funciona</a>
+      <a href="#contato" class="nav-cta">Fale Conosco</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-rule-top"></div>
+  <div class="hero-layout">
+    <div class="hero-main">
+      <p class="hero-kicker">Proteção — Direito — Crédito Justo</p>
+      <h1>Defendendo o <strong>direito ao crédito limpo</strong> de cada brasileiro</h1>
+      <p class="hero-lead">
+        A ANLC é a associação nacional que representa o consumidor na luta por um sistema de crédito transparente, justo e acessível em todo o território nacional.
+      </p>
+      <div class="hero-rule"></div>
+      <div class="hero-cta-group">
+        <a href="#reportagem" class="btn-primary">Ver Empresa em Destaque 2026</a>
+        <a href="#sobre" class="btn-ghost">Conhecer a Associação</a>
+      </div>
+    </div>
+    <div class="hero-sidebar">
+      <div class="sidebar-stat">
+        <div class="stat-num">+12 mil</div>
+        <div class="stat-label">Associados Ativos</div>
+        <p class="stat-desc">Em todos os estados do Brasil</p>
+      </div>
+      <div class="sidebar-stat">
+        <div class="stat-num">7 anos</div>
+        <div class="stat-label">De Atuação</div>
+        <p class="stat-desc">Referência em defesa do crédito</p>
+      </div>
+      <div class="sidebar-stat">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Resolução de Casos</div>
+        <p class="stat-desc">Resultados concretos para associados</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BANNER DESTAQUE -->
+<div class="banner-destaque">
+  <div class="banner-destaque-pulse"></div>
+  <p>Destaque ANLC 2026 — Empresa do Ano em Limpeza de Crédito</p>
+  <a href="#reportagem">Ler Reportagem Completa</a>
+</div>
+
+<!-- ══════════════════════════════════════
+     REPORTAGEM EM DESTAQUE — JUSTHELP
+══════════════════════════════════════ -->
+<section class="reportagem" id="reportagem">
+
+  <!-- Cabeçalho editorial -->
+  <div class="rep-editorial-header">
+    <div class="rep-editorial-header-inner">
+      <div>
+        <div class="rep-pub-name">Empresas em Destaque</div>
+        <div style="font-family:'Barlow',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:4px;">Publicação Oficial ANLC — Associação Nacional de Limpeza de Crédito</div>
+      </div>
+      <div class="rep-pub-info">
+        <span class="rep-pub-edicao">Edição Especial 2026</span>
+        <span>Empresa do Ano — Limpeza de Crédito</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="rep-triple-rule"></div>
+
+  <div class="rep-body-wrap">
+
+    <!-- Kicker -->
+    <div class="rep-kicker reveal">
+      <span class="rep-kicker-cat">Direito do Consumidor</span>
+      <div class="rep-kicker-line"></div>
+      <span class="rep-kicker-serie">Limpeza de Crédito — Empresa do Ano 2026</span>
+    </div>
+
+    <!-- Manchete -->
+    <h2 class="rep-headline reveal">
+      A empresa que devolveu o <em>nome limpo</em> a milhares de brasileiros
+    </h2>
+    <p class="rep-deck reveal">
+      Em um mercado marcado por promessas vazias e cobranças indevidas, a JustHelp se consolidou como a referência nacional em limpeza de crédito — combinando rigor jurídico, resultado comprovado e atendimento que respeita o consumidor.
+    </p>
+    <div class="rep-byline reveal">
+      <span>Por <strong>Redação ANLC</strong> &nbsp;|&nbsp; São Paulo, SP &nbsp;|&nbsp; Edição 2026</span>
+      <div class="rep-tags">
+        <span class="rep-tag">Limpeza de Crédito</span>
+        <span class="rep-tag">SPC / Serasa</span>
+        <span class="rep-tag">Indenização</span>
+      </div>
+    </div>
+
+    <!-- Imagem -->
+    <div class="rep-img-wrap reveal">
+      <img src="https://res.cloudinary.com/dmdaiwkyl/image/upload/v1774485877/inserir_um_subt%C3%ADtuloaAdemir_Rodrigues_nwfdul.png" alt="JustHelp — Destaque Nacional ANLC 2026" />
+    </div>
+    <p class="rep-img-caption reveal">JustHelp — Reconhecida pela ANLC como a empresa de maior destaque em limpeza de crédito e defesa do consumidor no Brasil. Edição 2026.</p>
+
+    <!-- Colunas -->
+    <div class="rep-cols reveal">
+      <div class="rep-col">
+        <p class="rep-dropcap">Mais de 70 milhões de brasileiros têm o nome negativado nos sistemas de proteção ao crédito. Para boa parte deles, essa condição não é fruto de dívidas reais — mas de cobranças indevidas, contratos encerrados que nunca saíram do cadastro ou erros operacionais de instituições financeiras. É exatamente nesse cenário que a JustHelp encontrou sua razão de existir.</p>
+        <p>Fundada com o propósito de colocar a lei do lado do consumidor, a empresa construiu uma metodologia sólida e uma reputação que poucas organizações do setor conseguiram alcançar: a de quem entrega resultado.</p>
+      </div>
+      <div class="rep-col-div"></div>
+      <div class="rep-col">
+        <p>A atuação da JustHelp se divide em duas frentes. A primeira é a remoção direta do nome nos cadastros do SPC e Serasa. A segunda, e talvez mais impactante, é a atuação nos casos de <em>indevida negativação</em>: quando o consumidor não apenas tem o direito de ter seu nome removido, mas também de ser indenizado pelos danos morais causados pela inscrição irregular.</p>
+        <p>"Muita gente não sabe que negativação indevida dá direito a indenização", explica a equipe jurídica da empresa. "O consumidor sofre constrangimento por um erro que não é dele. Existe previsão legal clara para isso."</p>
+      </div>
+      <div class="rep-col-div"></div>
+      <div class="rep-col">
+        <p>Essa abordagem dupla — remoção e indenização — posicionou a JustHelp como referência absoluta no segmento, separando-a de intermediadoras que apenas prometem "negociar" dívidas sem qualquer fundamento jurídico. A empresa não negocia dívidas: ela defende direitos. Essa distinção muda tudo o que o consumidor pode esperar do serviço.</p>
+        <p>Com sede na Av. Brigadeiro Faria Lima, em São Paulo, e atendimento em todo o Brasil, a JustHelp é hoje o retrato do que o setor de defesa do consumidor precisava.</p>
+      </div>
+    </div>
+
+    <!-- Pull quote -->
+    <div class="rep-pullquote reveal">
+      <blockquote>"Negativação indevida não é apenas um transtorno — é uma violação de direitos. E violação de direitos, no Brasil, tem previsão de indenização."</blockquote>
+      <cite>Equipe Jurídica — JustHelp</cite>
+    </div>
+
+    <!-- Dados -->
+    <div class="rep-dados reveal">
+      <div class="rep-dado">
+        <span class="rep-dado-num">98%</span>
+        <span class="rep-dado-label">Taxa de Resolução</span>
+        <span class="rep-dado-desc">Dos casos com resultado favorável ao consumidor</span>
+      </div>
+      <div class="rep-dado-sep"></div>
+      <div class="rep-dado">
+        <span class="rep-dado-num">+15 mil</span>
+        <span class="rep-dado-label">Clientes Atendidos</span>
+        <span class="rep-dado-desc">Brasileiros com o nome limpo</span>
+      </div>
+      <div class="rep-dado-sep"></div>
+      <div class="rep-dado">
+        <span class="rep-dado-num">Todo BR</span>
+        <span class="rep-dado-label">Abrangência Nacional</span>
+        <span class="rep-dado-desc">Atendimento remoto para todo o território</span>
+      </div>
+    </div>
+
+    <!-- Ficha -->
+    <div class="rep-ficha reveal">
+      <p class="rep-ficha-title">Ficha Institucional — JustHelp</p>
+      <div class="rep-ficha-grid">
+        <div class="rep-ficha-item"><label>CNPJ</label><p>65.620.168/0001-45</p></div>
+        <div class="rep-ficha-item"><label>Registro OAB</label><p>OAB/DF 51.223</p></div>
+        <div class="rep-ficha-item"><label>Endereço</label><p>Av. Brigadeiro Faria Lima, 1811, Sala 1119 — São Paulo/SP</p></div>
+        <div class="rep-ficha-item"><label>WhatsApp</label><p>(11) 94288-3457</p></div>
+        <div class="rep-ficha-item"><label>Instagram</label><p>@justhelpoficial</p></div>
+        <div class="rep-ficha-item"><label>Reconhecimento ANLC</label><p>Empresa do Ano 2026</p></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="sobre" id="sobre">
+  <div class="section-wrap">
+    <div class="section-header reveal">
+      <h2>A Associação</h2>
+      <span class="section-tag">Quem Somos</span>
+    </div>
+    <div class="sobre-grid">
+      <div class="sobre-col reveal">
+        <h3>Nossa Missão</h3>
+        <p>Proteger os direitos do consumidor brasileiro frente a irregularidades, abusos e negativações indevidas no sistema de crédito nacional, atuando com rigor e respaldo legal em cada caso.</p>
+      </div>
+      <div class="col-divider"></div>
+      <div class="sobre-col reveal">
+        <h3>Nossa Visão</h3>
+        <p>Ser a maior e mais respeitada associação de defesa do crédito justo no Brasil, consolidando-se como referência institucional na proteção do consumidor e na promoção de um mercado financeiro mais ético.</p>
+      </div>
+      <div class="col-divider"></div>
+      <div class="sobre-col reveal">
+        <h3>Nossos Valores</h3>
+        <p>Transparência em cada etapa do processo, integridade na condução dos casos, comprometimento com o associado e respeito irrestrito à legislação vigente e aos direitos do consumidor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="como" id="como">
+  <div class="section-wrap">
+    <div class="section-header reveal">
+      <h2>Como Funciona</h2>
+      <span class="section-tag">Processo</span>
+    </div>
+    <div class="steps-list">
+      <div class="step reveal">
+        <div class="step-rule"></div>
+        <div class="step-num">01</div>
+        <h3>Cadastro e Análise</h3>
+        <p>O associado apresenta sua situação. Analisamos os detalhes com atenção, sigilo e responsabilidade institucional.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-rule"></div>
+        <div class="step-num">02</div>
+        <h3>Verificação</h3>
+        <p>Nossa equipe verifica a regularidade das informações nos órgãos de proteção ao crédito e identifica irregularidades.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-rule"></div>
+        <div class="step-num">03</div>
+        <h3>Ação Institucional</h3>
+        <p>Tomamos as providências cabíveis junto às instituições responsáveis, com documentação adequada e respaldo jurídico.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-rule"></div>
+        <div class="step-num">04</div>
+        <h3>Resolução e Tutela</h3>
+        <p>Acompanhamos até a resolução e continuamos ao lado do associado para garantir a preservação de seus direitos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="diferenciais" id="diferenciais">
+  <div class="section-wrap">
+    <div class="section-header reveal">
+      <h2>Por que a ANLC</h2>
+      <span class="section-tag">Diferenciais</span>
+    </div>
+    <div class="dif-grid">
+      <div class="dif-item reveal">
+        <p class="dif-num">01 — Abrangência</p>
+        <h3>Atuação Nacional</h3>
+        <p>Presença em todos os estados brasileiros, com parcerias e representação local para atender o associado onde ele estiver.</p>
+      </div>
+      <div class="dif-item reveal">
+        <p class="dif-num">02 — Jurídico</p>
+        <h3>Respaldo Especializado</h3>
+        <p>Nossa rede conta com profissionais especializados em direito do consumidor, prontos para atuar com fundamento legal em cada situação.</p>
+      </div>
+      <div class="dif-item reveal">
+        <p class="dif-num">03 — Conduta</p>
+        <h3>Transparência Integral</h3>
+        <p>O associado acompanha cada etapa do processo com clareza e objetividade, sem promessas sem respaldo ou informações ocultas.</p>
+      </div>
+      <div class="dif-item reveal">
+        <p class="dif-num">04 — Alcance</p>
+        <h3>Defesa Coletiva e Individual</h3>
+        <p>Atuamos em casos individuais e em frentes coletivas, ampliando o impacto e a eficácia da nossa ação protetiva.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contato" id="contato">
+  <div class="contato-inner">
+    <div class="contato-text">
+      <div class="section-header reveal">
+        <h2>Fale com a ANLC</h2>
+        <span class="section-tag" style="border-color:rgba(184,150,46,0.5);color:var(--dourado)">Contato</span>
+      </div>
+      <p class="reveal">Nossa equipe está disponível para esclarecer dúvidas, orientar sobre o processo de associação e apresentar as formas de atuação da ANLC em defesa dos seus direitos. Entre em contato e um representante retornará em até 24 horas.</p>
+    </div>
+    <div class="contato-form-area reveal">
+      <div class="form-field">
+        <label class="form-label">Nome Completo</label>
+        <input type="text" placeholder="Seu nome completo" />
+      </div>
+      <div class="form-field">
+        <label class="form-label">Endereço de E-mail</label>
+        <input type="email" placeholder="seu@email.com.br" />
+      </div>
+      <div class="form-field">
+        <label class="form-label">Mensagem</label>
+        <textarea placeholder="Descreva brevemente sua situação..."></textarea>
+      </div>
+      <button class="form-submit" onclick="enviarEmail()">Enviar Mensagem</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">ANLC</span>
+    <p class="footer-copy">© 2026 ANLC – Associação Nacional de Limpeza de Crédito<br>Todos os direitos reservados</p>
+    <div class="footer-seal">
+      <span class="seal">Proteção</span>
+      <div class="seal-pipe"></div>
+      <span class="seal">Ética</span>
+      <div class="seal-pipe"></div>
+      <span class="seal">Transparência</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach((el) => {
+    const siblings = [...el.parentElement.querySelectorAll(':scope > .reveal')];
+    el.style.transitionDelay = (siblings.indexOf(el) * 0.1) + 's';
+    observer.observe(el);
+  });
+
+  function enviarEmail() {
+    const nome = document.querySelector('input[type="text"]').value.trim();
+    const email = document.querySelector('input[type="email"]').value.trim();
+    const msg = document.querySelector('textarea').value.trim();
+    if (!nome || !email) { alert('Por favor, preencha nome e e-mail.'); return; }
+    const dest = 'contato@anlc.org.br';
+    const assunto = encodeURIComponent('Contato via site – ' + nome);
+    const corpo = encodeURIComponent('Nome: ' + nome + '\nE-mail: ' + email + '\n\n' + msg);
+    window.location.href = 'mailto:' + dest + '?subject=' + assunto + '&body=' + corpo;
+  }
+</script>
+</body>
+</html>
